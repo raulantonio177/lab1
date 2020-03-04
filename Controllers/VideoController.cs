@@ -44,7 +44,11 @@ namespace MvcPlantilla.Controllers
         [HttpPost]
         public ActionResult Delete(int idVideo)
         {
-            return View();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@idVideo", idVideo));
+
+            BaseHelper.ejecutarSentencia("delete from video where @idVideo=idVideo", CommandType.Text, parametros);
+            return RedirectToAction("Index", "Video");
         }
 
         public ActionResult Edit()
