@@ -16,6 +16,10 @@ namespace MvcPlantilla.Controllers
 
         public ActionResult Index()
         {
+            ViewData["video"] = BaseHelper.ejecutarConsulta(
+                  "Select * from video",
+                  CommandType.Text);
+
             return View();
         }
 
